@@ -11,8 +11,6 @@ import com.animeapp.repository.UserRepository;
 public class UserService {
     private UserRepository userRepository;
 
-    private static final Boolean isLoggedIn = Boolean.FALSE;
-
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -30,9 +28,6 @@ public class UserService {
     }
 
     public User loginUser(User user) throws UserException{
-        if(isLoggedIn){
-            throw new UserException("Please log out first before trying to log in again.");
-        }
         String username = user.getUsername();
         String password = user.getPassword();
 
