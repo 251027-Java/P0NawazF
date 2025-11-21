@@ -1,28 +1,20 @@
 package com.animeapp.model;
 
-import java.util.Date;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "anime", schema = "myanimelist")
 public class Anime {
     @Id
-    private int id;
+    private Integer animeId;
     private String title;
-    private int totalEpisodes;
+    private Integer totalEpisodes;
+    @Enumerated(EnumType.STRING)
     private Status status;
+    private Integer avgRating;
 
-    public Anime(String title, int totalEpisodes, Status status) {
-        this.title = title;
-        this.totalEpisodes = totalEpisodes;
-        this.status = status;
-    }
-
-    public int getId() {
-        return id;
+    public Integer getId() {
+        return animeId;
     }
 
     public String getTitle() {
@@ -30,7 +22,7 @@ public class Anime {
     }
 
 
-    public int getTotalEpisodes() {
+    public Integer getTotalEpisodes() {
         return totalEpisodes;
     }
 
@@ -38,19 +30,27 @@ public class Anime {
         return status;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(Integer animeId) {
+        this.animeId = animeId;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setTotalEpisodes(int totalEpisodes) {
+    public void setTotalEpisodes(Integer totalEpisodes) {
         this.totalEpisodes = totalEpisodes;
     }
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Integer getAvgRatings() {
+        return avgRating;
+    }
+
+    public void setAvgRatings(Integer avgRating) {
+        this.avgRating = avgRating;
     }
 }

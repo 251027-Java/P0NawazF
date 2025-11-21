@@ -1,20 +1,18 @@
 package com.animeapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "ratings", schema = "myanimelist")public class Ratings {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int userId;
     private int animeId;
     private int score;
     private String review;
 
-    public Ratings(int id, int animeId, int userId, int score, String review) {
-        this.id = id;
+    public Ratings(int animeId, int userId, int score, String review) {
         this.animeId = animeId;
         this.userId = userId;
         this.score = score;
