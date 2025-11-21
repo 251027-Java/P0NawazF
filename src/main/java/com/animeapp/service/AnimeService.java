@@ -30,10 +30,6 @@ public class AnimeService {
         return animeRepository.findByTitle(title);
     }
 
-    public List<Anime> getAnimeByGenre(String genre) {
-        return animeRepository.findByGenre(genre);
-    }
-
     public Anime saveAnime(Anime anime) {
         return animeRepository.save(anime);
     }
