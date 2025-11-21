@@ -1,10 +1,10 @@
 package com.animeapp.controllers;
 
 import com.animeapp.model.Anime;
+import com.animeapp.model.requests.UserAnimeWatchedRequest;
 import com.animeapp.service.AnimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
@@ -20,8 +20,8 @@ public class AnimeController {
         this.animeService = animeService;
     }
 
-    @GetMapping("/getAnime")
-    public ResponseEntity<?> getAnimeByName(@RequestParam("title") String title){
+    @GetMapping()
+    public ResponseEntity<?> getAnimeByTitle(@RequestParam("title") String title){
         Anime anime = animeService.getAnimeByTitle(title);
 
         if(Objects.isNull(anime)){
@@ -29,6 +29,12 @@ public class AnimeController {
         }
         return ResponseEntity.ok(anime);
     }
+
+    @PostMapping("/watch")
+    public ResponseEntity<?> updateAnimeWatchStatus(@RequestBody UserAnimeWatchedRequest request){
+        return  ResponseEntity.ok(animeService.updateAnimeWatchStatus(request));
+    }
+
 
 
 }
