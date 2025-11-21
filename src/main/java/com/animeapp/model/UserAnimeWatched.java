@@ -1,20 +1,20 @@
 package com.animeapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user_anime_watched")
+@Table(name = "user_anime_watched", schema = "myanimelist")
 public class UserAnimeWatched {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer userId;
     private Integer animeId;
     private Boolean watched;
 
-    public UserAnimeWatched(Integer id, Integer userId, Integer animeId, Boolean watched) {
-        this.id = id;
+    public UserAnimeWatched(){}
+
+    public UserAnimeWatched(Integer userId, Integer animeId, Boolean watched) {
         this.userId = userId;
         this.animeId = animeId;
         this.watched = watched;
