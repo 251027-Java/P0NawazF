@@ -10,6 +10,4 @@ import java.util.List;
 @Repository
 public interface AnimeRepository extends JpaRepository<Anime, Integer> {
     List<Anime> findByTitle(String title);
-
-    List<Anime> findByGenre(String genre);
 }
